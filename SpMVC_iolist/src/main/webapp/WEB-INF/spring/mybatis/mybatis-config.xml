@@ -10,6 +10,6 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias type="com.biz.iolist.model.IolistVO" alias="IolistVO" />
+		<typeAlias type="com.biz.iolist.model.IolistVO" alias="ioVO" />
 	</typeAliases>
 </configuration>

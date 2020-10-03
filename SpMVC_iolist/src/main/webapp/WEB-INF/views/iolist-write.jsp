@@ -10,22 +10,7 @@
 <title>home</title>
 </head>
 <body>
-	<header>
-		<h2>Loo9 쇼핑몰 V1</h2>
-		<p>Loo9 쇼핑몰 2020 V1</p>
-	</header>
-	<section>
-		<c:choose>
-			<c:when test="${BODY == 'IO_WRITE' }">
-				<%@ include file="/WEB-INF/views/iolist-write.jsp"%>
-			</c:when>
-			<c:when test="${BODY == 'IO_DETAIL'}">
-				<%@ include file="/WEB-INF/views/iolist-detail.jsp"%>
-			</c:when>
-			<c:otherwise>
-				<%@ include file="/WEB-INF/views/iolist-list.jsp"%>
-			</c:otherwise>
-		</c:choose>
-	</section>
+<h3>home</h3>
+	
 </body>
 </html>
