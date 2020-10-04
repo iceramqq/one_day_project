@@ -19,32 +19,28 @@
 		<th>일자</th>
 		<th>시각</th>
 		<th>상품명</th>
-		<th>구분</th>
-		<th>단가</th>
+		<th>매입단가</th>
+		<th>판매단가</th>
 		<th>수량</th>
-		<th>합계</th>
+		<th>매입합계</th>
+		<th>판매합계</th>
 	</tr>
-	<c:choose>
-		<c:when test="${empty iolist-list}">
-			<tr>
-				<td>데이터가 없음</td>
-			</tr>
-		</c:when>
-		<c:otherwise>
-			<c:forEach items="${iolist-list}" var="ioVO" varStatus="i">
-				<tr data-seq="${ioVO.seq}">
-					<td>${ioVO.seq}</td>
-					<td>${ioVO.io_date}</td>
-					<td>${ioVO.io_time}</td>
-					<td>${ioVO.io_pname}</td>
-					<td>${ioVO.io_input}</td>
-					<td>${ioVO.io_price}</td>
-					<td>${ioVO.io_quan}</td>
-					<td>${ioVO.io_total}</td>
-				</tr>
-			</c:forEach>
-		</c:otherwise>
-	</c:choose>
+	<c:otherwise>
+	<c:forEach items="${iolist-list}" var="ioVO" varStatus="i">
+		<tr data-seq="${ioVO.seq}">
+			<td>${i.count}</td>
+			<td>${ioVO.io_date}</td>
+			<td>${ioVO.io_time}</td>
+			<td>${ioVO.io_pname}</td>
+			<td>${ioVO.io_input}</td>
+			<td>${ioVO.in_io_price}</td>
+			<td>${ioVO.out_io_price}</td>
+			<td>${ioVO.io_quan}</td>
+			<td>${ioVO.in_io_total}</td>
+			<td>${ioVO.out_io_total}</td>
+		</tr>
+	</c:forEach>
+	</c:otherwise>
 </table>
 <div>
 	<a href="${rootPath}/iolist/input">새로작성</a>

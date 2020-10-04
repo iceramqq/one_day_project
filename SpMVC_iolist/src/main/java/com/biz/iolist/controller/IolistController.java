@@ -27,7 +27,6 @@ public class IolistController {
 		
 		List<IolistVO> iolist_list = iolistService.selectAll();
 		model.addAttribute("iolist-list",iolist_list);
-		log.debug(iolist_list.toString());
 		return "home";
 	}
 }
