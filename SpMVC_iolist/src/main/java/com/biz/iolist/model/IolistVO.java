@@ -21,4 +21,7 @@ public class IolistVO {
 	private int io_price;//	number
 	private int io_quan;//	number
 	private int io_total;//	number	
+	
+	private int in_total;
+	private int out_total;
 }

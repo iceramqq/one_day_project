@@ -25,7 +25,7 @@ public class HomeController {
 		int in_sum = 0;
 		int out_sum = 0;
 		for (IolistVO iolistVO : iolist_list) {
-			if(iolistVO.getIo_input()=='1') {
+			if(iolistVO.getIo_input()==1) {
 				in_sum += iolistVO.getIo_total();
 			} else {
 				out_sum += iolistVO.getIo_total();
