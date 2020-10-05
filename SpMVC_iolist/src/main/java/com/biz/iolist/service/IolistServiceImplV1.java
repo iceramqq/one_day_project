@@ -1,5 +1,8 @@
 package com.biz.iolist.service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,9 @@ import org.springframework.stereotype.Service;
 import com.biz.iolist.mapper.IolistDao;
 import com.biz.iolist.model.IolistVO;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class IolistServiceImplV1 implements IolistService{
 
@@ -17,52 +23,48 @@ public class IolistServiceImplV1 implements IolistService{
 	@Override
 	public List<IolistVO> selectAll() {
 		// TODO Auto-generated method stub
-		List<IolistVO> iList = iolistDao.selectAll();
-		for (int i = 0; i < iList.size(); i++) {
-			IolistVO iolistVO = new IolistVO();
-			iolistVO.setSeq(iList.get(i).getSeq());
-			iolistVO.setIo_date(iList.get(i).getIo_date());
-			iolistVO.setIo_time(iList.get(i).getIo_time());
-			iolistVO.setIo_pname(iList.get(i).getIo_pname());
-			if(iList.get(i).getIo_input() == '1') {
-				iolistVO.setIn_io_price(iList.get(i).getIo_price());
-				iolistVO.setIo_quan(iList.get(i).getIo_quan());
-				iolistVO.setIn_io_total(iList.get(i).getIo_total());
-			} else if(iList.get(i).getIo_input() == '2') {
-				iolistVO.setIn_io_price(iList.get(i).getIo_price());
-				iolistVO.setIo_quan(iList.get(i).getIo_quan());
-				iolistVO.setIn_io_total(iList.get(i).getIo_total());
-			}
-			iList.add(iolistVO);
-		}
-		
-		
-		
-		return iList;
+				
+		return iolistDao.selectAll();
 	}
 
 	@Override
-	public IolistVO findById(String id) {
+	public IolistVO findById(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return iolistDao.findById(id);
 	}
 
 	@Override
 	public int insert(IolistVO iolistVO) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		LocalDate localDate = LocalDate.now();
+		LocalTime localTime = LocalTime.now();
+				
+		DateTimeFormatter dt = DateTimeFormatter.ofPattern("HH:mm:ss");
+		DateTimeFormatter dd = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+		iolistVO.setIo_date(localDate.format(dd).toString());
+		iolistVO.setIo_time(localTime.format(dt).toString());
+		iolistVO.setIo_total(iolistVO.getIo_price() * iolistVO.getIo_quan());
+		
+		int ret = iolistDao.insert(iolistVO);
+		return ret;
 	}
 
 	@Override
 	public int update(IolistVO iolistVO) {
 		// TODO Auto-generated method stub
-		return 0;
+		
+		iolistVO.setIo_total(iolistVO.getIo_price()*iolistVO.getIo_quan());
+		int ret = iolistDao.update(iolistVO);
+		log.debug(iolistVO.toString());
+		return ret;
 	}
 
 	@Override
-	public int delete(String id) {
+	public int delete(long id) {
 		// TODO Auto-generated method stub
-		return 0;
+		int ret = iolistDao.delete(id);
+		return ret;
 	}
 
 }

@@ -13,14 +13,38 @@
 	</select>
 	<insert id="insert">
 		INSERT INTO tbl_iolist (
-		
+			SEQ,
+			IO_DATE,
+			IO_TIME,
+			IO_PNAME,
+			IO_INPUT,
+			IO_PRICE,
+			IO_QUAN,
+			IO_TOTAL
 		) VALUES (
 			SEQ_IOLIST.NEXTVAL,
-			
+			#{io_date},
+			#{io_time},
+			#{io_pname},
+			#{io_input},
+			#{io_price},
+			#{io_quan},
+			#{io_total}
 		)
 	</insert>
 	
-	<update id="update"></update>
-	<delete id="delete"></delete>
+	<update id="update">
+		UPDATE tbl_iolist SET
+			io_pname 	= #{io_pname, jdbcType=VARCHAR},
+			io_input 	= #{io_input, jdbcType=VARCHAR},
+			io_price 	= #{io_price, jdbcType=VARCHAR},
+			io_quan		= #{io_quan, jdbcType=VARCHAR},
+			io_total 	= #{io_total, jdbcType=VARCHAR}
+		WHERE seq = #{seq, jdbcType=VARCHAR}
+	</update>
+	<delete id="delete">
+		DELETE FROM tbl_iolist 
+ 		WHERE seq = #{seq}
+	</delete>
  
  </mapper> 
