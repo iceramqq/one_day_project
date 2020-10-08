@@ -117,13 +117,8 @@ article a:hover {
 			</c:choose>
 		</c:forEach>
 		<tr id="total">
-			<td></th>
-			<td>합계</th>
-			<td></th>
-			<td></th>
-			<td></th>
-			<td></th>
-			<td></th>
+			
+			<td colspan="7">합계</th>
 			<td>${in_total}</th>
 			<td>${out_total}</th>
 		</tr>

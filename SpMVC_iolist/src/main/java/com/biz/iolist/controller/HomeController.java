@@ -32,6 +32,7 @@ public class HomeController {
 			}
 			
 		}
+		
 		model.addAttribute("ios",iolist_list);
 		model.addAttribute("in_total", in_sum);
 		model.addAttribute("out_total", out_sum);
