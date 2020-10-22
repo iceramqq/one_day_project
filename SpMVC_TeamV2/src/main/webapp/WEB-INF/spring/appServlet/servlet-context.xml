@@ -22,8 +22,8 @@
 		<beans:property name="order" value="2"/>
 	</beans:bean>
 	
-	<context:component-scan base-package="com.biz.team" />
-	
+	<context:component-scan base-package="com.biz.team.controller" />
+	<context:component-scan base-package="com.biz.team.service" />
 	
 	
 </beans:beans>

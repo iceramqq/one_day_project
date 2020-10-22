@@ -35,12 +35,12 @@
 	
 	<update id="update">
 		UPDATE tbl_iolist SET
-			io_pname 	= #{io_pname, jdbcType=VARCHAR},
-			io_input 	= #{io_input, jdbcType=VARCHAR},
-			io_price 	= #{io_price, jdbcType=VARCHAR},
-			io_quan		= #{io_quan, jdbcType=VARCHAR},
-			io_total 	= #{io_total, jdbcType=VARCHAR}
-		WHERE seq = #{seq, jdbcType=VARCHAR}
+			io_pname 	= #{io_pname},
+			io_input 	= #{io_input},
+			io_price 	= #{io_price},
+			io_quan		= #{io_quan},
+			io_total 	= #{io_total}
+		WHERE seq = #{seq}
 	</update>
 	<delete id="delete">
 		DELETE FROM tbl_iolist 
