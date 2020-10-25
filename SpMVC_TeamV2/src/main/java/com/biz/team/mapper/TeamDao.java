@@ -12,22 +12,22 @@ import com.biz.team.sql.TeamSQL;
 
 public interface TeamDao {
 
-	@Select("SELECT * FROM tbl_bbs order by b_seq desc")
-	public List<TeamVO> selectAll();
+	@Select("SELECT * FROM tbl_hlist WHERE h_category = #{category} order by h_seq")
+	public List<TeamVO> selectAll(String category);
 	
-	@Select("SELECT * FROM tbl_bbs WHERE b_seq = #{seq}")
+	@Select("SELECT * FROM tbl_hlist WHERE H_seq = #{seq}")
 	public TeamVO findBySeq(long seq);
 	
 	/*
 	 * BBsSQL 클래스에 정의된 bbs_insert method를 호출하여
 	 * SQL문을 생성하고, 여기에 코드를 추가하라
 	 */
-	@InsertProvider(type=TeamSQL.class,method="bbs_insert")
+	@InsertProvider(type=TeamSQL.class,method="team_insert")
 	public int insert(TeamVO teamVO);
 	
-	@UpdateProvider(type=TeamSQL.class,method="bbs_update")
+	@UpdateProvider(type=TeamSQL.class,method="team_update")
 	public int update(TeamVO teamVO);
 	
-	@Delete("DELETE FROM tbl_bbs WHERE b_seq = #{seq}")
+	@Delete("DELETE FROM tbl_hlist WHERE h_seq = #{seq}")
 	public int delete(long seq);
 }
