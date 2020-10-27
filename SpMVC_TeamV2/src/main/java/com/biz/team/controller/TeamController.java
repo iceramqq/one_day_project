@@ -40,7 +40,7 @@ public class TeamController {
 	}
 	
 	@RequestMapping(value="/write",method=RequestMethod.POST)
-	public String write(TeamVO teamVO,@RequestParam("file") MultipartFile file) {
+	public String write(TeamVO teamVO,MultipartFile file) {
 		
 		teamService.insert(teamVO, file);
 		return "redirect:/team/list";

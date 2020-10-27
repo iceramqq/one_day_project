@@ -29,7 +29,7 @@ public class FileServiceImplV1 implements FileService{
 	 */
 	protected final String rootFolder;
 	public FileServiceImplV1() {
-		rootFolder = "./src/main/webapp/WEB-INF/resources/img";
+		rootFolder = "./src/main/webapp/WEB-INF/resources/img/";
 	}
 	
 	@Override
