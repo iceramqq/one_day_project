@@ -25,35 +25,68 @@ public class TeamController {
 	@Autowired
 	@Qualifier("teamServiceV1")
 	private TeamService teamService;
-	
-	@RequestMapping(value = "/list/{category}",method = RequestMethod.GET)
-	public String list(@PathVariable("category") String category,Model model) {
-		
+
+	@RequestMapping(value = "/list/{category}", method = RequestMethod.GET)
+	public String list(@PathVariable("category") String category, Model model) {
+
 		List<TeamVO> teamList = teamService.selectAll(category);
-		model.addAttribute("hlist",teamList);
+		String name = null;
+		if(category.equals("1")) {
+			name = "고궁/성";
+		} else if (category.equals("2")) {
+			name = "고택/생가";
+		} else if (category.equals("3")) {
+			name = "유적지/사적지";
+		}
+		model.addAttribute("category", name);
+		model.addAttribute("hlist", teamList);
 		return "/team/list";
 	}
-	
-	@RequestMapping(value="/write",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String write() {
 		return "/team/write";
 	}
-	
-	@RequestMapping(value="/write",method=RequestMethod.POST)
-	public String write(TeamVO teamVO,MultipartFile file) {
-		
+
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	public String write(TeamVO teamVO, MultipartFile file) {
+
 		teamService.insert(teamVO, file);
-		return "redirect:/team/list";
-	
+		return "redirect:/team/list/1";
+
 	}
-	
-	@RequestMapping(value="/detail/{seq}",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/detail/{seq}", method = RequestMethod.GET)
 	public String detail(@PathVariable("seq") String seq, Model model) {
-		
+
 		long long_seq = Long.valueOf(seq);
 		TeamVO teamVO = teamService.findBySeq(long_seq);
-		
-		model.addAttribute("teamVO",teamVO);
+
+		model.addAttribute("teamVO", teamVO);
 		return "/team/detail";
+	}
+
+	@RequestMapping(value = "/delete/{seq}", method = RequestMethod.GET)
+	public String update(@PathVariable("seq") String seq) {
+
+		long long_seq = Long.valueOf(seq);
+		teamService.delete(long_seq);
+
+		return "redirect:/team/list/1";
+	}
+
+	@RequestMapping(value = "/update/{seq}", method = RequestMethod.GET)
+	public String update(@PathVariable("seq") String seq, Model model) {
+		long long_seq = Long.valueOf(seq);
+		model.addAttribute("teamVO", teamService.findBySeq(long_seq));
+		return "/team/write";
+	}
+
+	@RequestMapping(value = "/update/{seq}", method = RequestMethod.POST)
+	public String update(TeamVO teamVO, @RequestParam("file") MultipartFile file) {
+
+		teamService.update(teamVO, file);
+		return "redirect:/team/list/1";
+
 	}
 }

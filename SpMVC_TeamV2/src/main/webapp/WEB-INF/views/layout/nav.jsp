@@ -6,7 +6,13 @@
 nav ul {
 	list-style: none;
 	display: flex;
-	background-color: green;
+	background: linear-gradient(
+    90deg,
+    #051937,
+    #004d7a,
+    #008793,
+    #00bf72,
+    #a8eb12);
 	color: white;
 }
 
@@ -16,7 +22,7 @@ nav ul li {
 	cursor: pointer;
 }
 
-nav ul li:nth-child(5) {
+nav ul li:nth-child(6) {
 	margin-left: auto;
 }
 
@@ -34,6 +40,9 @@ $(function() {
 	$(".home").click(function() {
 		document.location.href = "${rootPath}/"
 	})
+	$(".bbs-list").click(function() {
+		document.location.href = "${rootPath}/bbs/list"
+	})
 })
 </script>
 <nav id="main-nav">
@@ -42,6 +51,7 @@ $(function() {
 		<li class="team-list" data-category="1">고궁/성</li>
 		<li class="team-list" data-category="2">고택/생가</li>
 		<li class="team-list" data-category="3">유적지/사적지</li>
+		<li class="bbs-list">자유게시판</li>
 		<li>마이페이지</li>
 		<li>관리자</li>
 		<li>로그아웃</li>

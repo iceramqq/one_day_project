@@ -9,8 +9,8 @@ section#search-list {
 	justify-content: center;
 }
 
-section#search-list h3#title {
-	border-bottom: 2px double black;
+section#search-list h3 {
+	border-bottom: 1px double black;
 	width: 60%;
 	margin: 10px;
 	padding: 10px;
@@ -21,6 +21,7 @@ section#search-list div {
 	border-bottom: 1px solid black;
 	margin: 5px;
 	padding: 5px;
+	cursor: pointer;
 }
 
 section#search-list div p b {
@@ -60,12 +61,14 @@ $(function() {
 		document.location.href = "${rootPath}/team/detail/" + seq
 	})
 	$("#btn-write").click(function() {
+		let category = $(this).data("category")
 		document.location.href = "${rootPath}/team/write"
 	})
 })
 
 </script>
 <section id="search-list">
+	<h3>${category}</h3>
 	<c:forEach items="${hlist}" var="hlist">
 		<div class="team-item" data-seq="${hlist.h_seq}">
 			<c:if test="${hlist.h_file == null }">

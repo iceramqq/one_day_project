@@ -16,7 +16,7 @@ import lombok.ToString;
 public class TeamVO {
 
 	private long h_seq;		//	NUMBER
-	private String h_category;	//	nVARCHAR2(50)
+	private byte h_category;	
 	private String h_title;	//	nVARCHAR2(50)
 	private String h_address;	//	NVARCHAR2(255)
 	private String h_content;	//	NVARCHAR2(2000)

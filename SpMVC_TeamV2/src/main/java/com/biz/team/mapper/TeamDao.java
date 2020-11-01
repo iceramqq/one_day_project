@@ -18,10 +18,6 @@ public interface TeamDao {
 	@Select("SELECT * FROM tbl_hlist WHERE H_seq = #{seq}")
 	public TeamVO findBySeq(long seq);
 	
-	/*
-	 * BBsSQL 클래스에 정의된 bbs_insert method를 호출하여
-	 * SQL문을 생성하고, 여기에 코드를 추가하라
-	 */
 	@InsertProvider(type=TeamSQL.class,method="team_insert")
 	public int insert(TeamVO teamVO);
 	

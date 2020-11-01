@@ -13,10 +13,11 @@ h_file	NVARCHAR2(501)
 );
 
 CREATE SEQUENCE seq_hlist
-START WITH 1 INCREMENT BY 1;
+START WITH 31 INCREMENT BY 1;
 
 DROP TABLE tbl_hlist;
+DROP SEQUENCE seq_hlist;
 
-SELECT * FROM tbl_hlist WHERE h_category = 2 order by h_seq;
+SELECT * FROM tbl_hlist WHERE h_category = 1 order by h_seq;
 
 DELETE tbl_hlist WHERE h_category = 2;

@@ -73,7 +73,20 @@ section#team-button-box button:nth-child(3) {
 }
 </style>
 <script type="text/javascript">
-
+$(function() {
+	$(".team-list").click(function() {
+		let category = ${teamVO.h_category}
+		document.location.href = "${rootPath}/team/list/" + category
+	})
+	$(".update").click(function() {
+		let seq = ${teamVO.h_seq}
+		document.location.href = "${rootPath}/team/update/" + seq
+	})
+	$(".delete").click(function() {
+		let seq = ${teamVO.h_seq}
+		document.location.href = "${rootPath}/team/delete/" + seq
+	})
+})
 </script>
 <section id="team-detail-header">
 	<article>
@@ -100,6 +113,7 @@ section#team-button-box button:nth-child(3) {
 	<p>${teamVO.h_content}</p>
 </section>
 <section id="team-button-box">
+	<button class="team-list">리스트</button>
 	<button class="update">수정</button>
 	<button class="delete">삭제</button>
 </section>
