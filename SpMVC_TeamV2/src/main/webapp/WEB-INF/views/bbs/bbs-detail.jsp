@@ -35,17 +35,15 @@ section#team-detail-header .title {
 }
 
 section#team-detail-header .content {
+ display: inline-block;
+  width: 25%;
   width: 25%;
   background-color: #ddd;
   font-weight: bold;
   text-align: right;
 }
 
-section#team-detail-header img {
-  margin: 5px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-}
+
 
 section#team-detail-body {
   width: 50%;
@@ -57,6 +55,7 @@ section#team-button-box {
   width: 50%;
   margin: 10px auto;
   text-align: right;
+ 
 }
 
 section#team-button-box button {
@@ -67,6 +66,7 @@ section#team-button-box button {
   border-radius: 5px;
   color: white;
   font-weight: bold;
+   cursor: pointer;
 }
 /* button.bbs-list */
 section#team-button-box button:hover {
@@ -90,20 +90,43 @@ h2 {
   color: violet;
 }
 </style>
+<script>
+$(function() {
+	$(".bbs-list").click(function() {
+		document.location.href = "${rootPath}/bbs/list"
+	})
+	$(".update").click(function() {
+		let seq = ${BbsVO.b_seq}
+		document.location.href = "${rootPath}/bbs/update/" + seq
+	})
+	$(".delete").click(function() {
+		let seq = ${BbsVO.b_seq}
+		document.location.href = "${rootPath}/bbs/delete/" + seq
+	})
+})
+</script>
 <section id="team-detail-header">
 	<article>
 		<h2>게시판</h2>
 		<div class="title">작성자</div>
+		<th>${BbsVO.b_writer}</th>
 		<hr />
 		<div class="content">제목</div>
+		<th>${BbsVO.b_subject}</th>
 		<hr />
 		<div class="title">날짜</div>
+		<th>${BbsVO.b_date}</th>
 		<hr />
-		<div class="content">내용</div>
+		<div class="content">시간</div>
+		<th>${BbsVO.b_time}</th>
+		<hr />
+		
+		<div class="title">내용</div>
+		<th>${BbsVO.b_content}</th>
 	</article>
 </section>
 <section id="team-button-box">
-	<button class="list">리스트</button>
+	<button class="bbs-list">리스트</button>
 	<button class="update">수정</button>
 	<button class="delete">삭제</button>
 </section>

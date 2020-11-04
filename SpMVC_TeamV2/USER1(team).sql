@@ -21,3 +21,22 @@ DROP SEQUENCE seq_hlist;
 SELECT * FROM tbl_hlist WHERE h_category = 1 order by h_seq;
 
 DELETE tbl_hlist WHERE h_category = 2;
+
+CREATE TABLE tbl_board (
+b_seq	NUMBER		PRIMARY KEY,
+b_date	VARCHAR2(10)	NOT NULL,	
+b_time	VARCHAR2(10)	NOT NULL,	
+b_writer	NVARCHAR2(30)	NOT NULL,	
+b_subject	NVARCHAR2(125)	NOT NULL,	
+b_content	NVARCHAR2(2000)		,
+b_count	NUMBER		
+
+);
+
+CREATE SEQUENCE seq_board
+START WITH 1 INCREMENT BY 1;
+
+DROP TABLE tbl_board;
+DROP SEQUENCE seq_board;
+
+

@@ -90,12 +90,12 @@ $(function() {
 </script>
 <section id="team-detail-header">
 	<article>
-		<a href="${rootPath}/resources/img/${teamVO.h_file}" target=_new> 
+		<a href="${rootPath}/upload/team/${teamVO.h_file}" target=_new> 
 			<c:if test="${empty teamVO.h_file}">
-				<img src="${rootPath}}/resources/img/noImage.png" width="200px">
+				<img src="${rootPath}/upload/team/noImage.png" width="200px">
 			</c:if>
 			<c:if test="${not empty teamVO.h_file}"> 
-				<img src="${rootPath}/resources/img/${teamVO.h_file}" width="200px">
+				<img src="${rootPath}/upload/team/${teamVO.h_file}" width="200px">
 			</c:if>
 		</a>
 	</article>

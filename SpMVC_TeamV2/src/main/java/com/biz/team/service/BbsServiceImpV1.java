@@ -10,7 +10,7 @@ import com.biz.team.model.BbsVO;
 
 @Service
 public class BbsServiceImpV1 implements BbsService{
-/*
+
 	@Autowired
 	private BbsDao bbsDao;
 	
@@ -34,14 +34,15 @@ public class BbsServiceImpV1 implements BbsService{
 
 	@Override
 	public int update(BbsVO bbsVO) {
-		// TODO Auto-generated method stub
+		
 		return bbsDao.update(bbsVO);
+		
 	}
 
 	@Override
 	public int delete(long seq) {
-		// TODO Auto-generated method stub
+		
 		return bbsDao.delete(seq);
 	}
-*/
+
 }

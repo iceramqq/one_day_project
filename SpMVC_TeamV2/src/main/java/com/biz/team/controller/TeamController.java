@@ -38,6 +38,11 @@ public class TeamController {
 		} else if (category.equals("3")) {
 			name = "유적지/사적지";
 		}
+		for (TeamVO teamVO : teamList) {
+			String str = teamVO.getH_content();
+			String content = str.substring(0, 90)+"...";
+			teamVO.setH_content(content);
+		}
 		model.addAttribute("category", name);
 		model.addAttribute("hlist", teamList);
 		return "/team/list";

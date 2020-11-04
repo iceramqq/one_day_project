@@ -8,25 +8,23 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.UpdateProvider;
 
 import com.biz.team.model.BbsVO;
-import com.biz.team.model.TeamVO;
 import com.biz.team.sql.BbsSQL;
-import com.biz.team.sql.TeamSQL;
 
 public interface BbsDao {
-	/*
-	@Select("SELECT * FROM tbl_bbs order by b_seq desc")
+
+	@Select("SELECT * FROM tbl_board order by b_seq desc")
 	public List<BbsVO> selectAll();
-	
-	@Select("SELECT * FROM tbl_bbs WHERE b_seq = #{seq}")
+
+	@Select("SELECT * FROM tbl_board WHERE b_seq = #{seq}")
 	public BbsVO findBySeq(long seq);
-	
+
 	@InsertProvider(type=BbsSQL.class,method="bbs_insert")
 	public int insert(BbsVO bbsVO);
-	
+
 	@UpdateProvider(type=BbsSQL.class,method="bbs_update")
 	public int update(BbsVO bbsVO);
-	
-	@Delete("DELETE FROM tbl_bbs WHERE b_seq = #{seq}")
+
+	@Delete("DELETE FROM tbl_board WHERE b_seq =#{b_seq}")
 	public int delete(long seq);
-	*/
+
 }

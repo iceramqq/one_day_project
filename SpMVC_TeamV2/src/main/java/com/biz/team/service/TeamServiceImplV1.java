@@ -67,7 +67,7 @@ public class TeamServiceImplV1 implements TeamService {
 		}
 		
 		int ret = teamDao.update(teamVO);
-		return teamDao.update(teamVO);
+		return ret;
 	}
 
 	@Override

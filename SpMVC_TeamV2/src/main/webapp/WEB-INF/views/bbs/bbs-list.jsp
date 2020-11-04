@@ -29,6 +29,11 @@ td {
 	line-height: 1.25em;
 	color: #666;
 	border-bottom: 1px solid #8d8d8d;
+	cursor: pointer;
+}
+
+tr.bor-tr:hover {
+	background-color: #ccc;
 }
 
 div.btn {
@@ -54,13 +59,15 @@ div.btn button {
 </style>
 <script type="text/javascript">
 	$(function() {
-		$(".team-item").click(function() {
-			let seq = $(this).data("seq")
-			document.location.href = "${rootPath}/bbs/detail/" + seq
-		})
 		$("#g-save").click(function() {
 			document.location.href = "${rootPath}/bbs/write"
 		})
+
+		$("tr").click(function() {
+			let seq = $(this).data("seq")
+			document.location.href = "${rootPath}/bbs/detail/" + seq
+		})
+
 	})
 </script>
 <h2>게시판</h2>
@@ -68,35 +75,29 @@ div.btn button {
 	<thead>
 		<tr>
 			<th>번호</th>
+			<th>날짜</th>
+			<th>시간</th>
 			<th>작성자</th>
 			<th>제목</th>
-			<th>날짜</th>
+			<th>내용</th>
 			<th>조회수</th>
 		</tr>
 	</thead>
-	<tbody>
+	<c:if test="${empty bbsList}">
 		<tr>
-			<td>1</td>
-			<td>aaa</td>
-			<td id="title">게시글</td>
-			<td>2020-10-16</td>
-			<td>2</td>
+			<td colspan="7">데이터가 없습니다</td>
+	</c:if>
+	<c:forEach items="${bbsList}" var="list">
+		<tr class="bor-tr" data-seq="${list.b_seq}">
+			<td>${list.b_seq}</td>
+			<td>${list.b_date}</td>
+			<td>${list.b_time}</td>
+			<td>${list.b_writer}</td>
+			<td>${list.b_subject}</td>
+			<td>${list.b_content}</td>
+			<td>${list.b_count}</td>
 		</tr>
-		<tr>
-			<td>2</td>
-			<td>bbb</td>
-			<td id="title">게시글</td>
-			<td>2020-10-16</td>
-			<td>3</td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>ccc</td>
-			<td id="title">게시글</td>
-			<td>2020-10-16</td>
-			<td>3</td>
-		</tr>
-	</tbody>
+	</c:forEach>
 </table>
 <div class="btn">
 	<button id="g-save">작성</button>

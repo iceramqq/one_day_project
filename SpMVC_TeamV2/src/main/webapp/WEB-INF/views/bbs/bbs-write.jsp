@@ -74,22 +74,25 @@ div.button-box button:hover {
 </style>
 <h2>게시판 작성</h2>
 <form method="POST" id="write-form">
+		<div>
+		<input type="hidden" name="b_seq" value="${BbsVO.b_seq}">
+		</div>
 	<div>
-		<label>작성자</label> <input name="g_me" />
+		<label>작성자</label> <input  name="b_writer" value="${BbsVO.b_writer}"/>
 	</div>
 
 	<div>
-		<label>날짜</label> <input name="g_date" />
+		<label>날짜</label> <input  name="b_date" value="${BbsVO.b_date}"/>
 	</div>
 	<div>
-		<label>시각</label> <input name="g_time" />
+		<label>시각</label> <input name="b_time" value="${BbsVO.b_time}"/>
 	</div>
 	<div>
-		<label>제목</label> <input name="g_subject" />
+		<label>제목</label> <input  name="b_subject" value="${BbsVO.b_subject}"/>
 	</div>
 	<div>
 		<label></label>
-		<textarea name="g_content" rows="5" cols="20"></textarea>
+		<textarea  id="b_content"  name="b_content" rows="5" cols="20"></textarea>
 	</div>
 	<div class="button-box">
 		<button id="g-save">저장</button>

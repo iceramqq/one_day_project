@@ -29,7 +29,7 @@ section#search-list div p b {
 }
 
 img {
-	width: 50px;
+	width: 15%;
 	float: left;
 	margin: 10px;
 }
@@ -72,14 +72,15 @@ $(function() {
 	<c:forEach items="${hlist}" var="hlist">
 		<div class="team-item" data-seq="${hlist.h_seq}">
 			<c:if test="${hlist.h_file == null }">
-				<img src="${rootPath}/resources/img/noImage.png" width="50px">
+				<img src="${rootPath}/upload/team/noImage.png" width="15%">
 			</c:if>
 			<c:if test="${hlist.h_file != null }">
-				<img src="${rootPath}/resources/img/${hlist.h_file}" alt="이미지">
+				<img src="${rootPath}/upload/team/${hlist.h_file}" alt="이미지">
 			</c:if>
 			<h4>${hlist.h_title}</h4>
 			<p>${hlist.h_address}</p>
 			<p>${hlist.h_tel}</p>
+			<p>${hlist.h_content}</p>
 		</div>
 	</c:forEach>
 	<article>

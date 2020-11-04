@@ -4,37 +4,33 @@ import org.apache.ibatis.jdbc.SQL;
 
 public class BbsSQL {
 
-public String bbs_insert() {
-		
+	public String bbs_insert() {
+
 		SQL sql = new SQL();
-		sql.INSERT_INTO("tbl_hlist");
-		sql.INTO_COLUMNS("h_seq").INTO_VALUES("seq_hlist.NEXTVAL");
-		sql.INTO_COLUMNS("h_category").INTO_VALUES("#{h_category}");
-		sql.INTO_COLUMNS("h_title").INTO_VALUES("#{h_title}");
-		sql.INTO_COLUMNS("h_address").INTO_VALUES("#{h_address}");
-		sql.INTO_COLUMNS("h_content").INTO_VALUES("#{h_content}");
-		sql.INTO_COLUMNS("h_tel").INTO_VALUES("#{h_tel}");
-		sql.INTO_COLUMNS("h_file").INTO_VALUES("#{h_file}");
+		sql.INSERT_INTO("tbl_board");
+		sql.INTO_COLUMNS("b_seq").INTO_VALUES("seq_board.NEXTVAL");
+		sql.INTO_COLUMNS("b_date").INTO_VALUES("#{b_date}");
+		sql.INTO_COLUMNS("b_time").INTO_VALUES("#{b_time}");
+		sql.INTO_COLUMNS("b_writer").INTO_VALUES("#{b_writer}");
+		sql.INTO_COLUMNS("b_subject").INTO_VALUES("#{b_subject}");
+		sql.INTO_COLUMNS("b_content").INTO_VALUES("#{b_content}");
+		sql.INTO_COLUMNS("b_count").INTO_VALUES("#{b_count}");
 
 		return sql.toString();
-		
+
 	}
 
-	/*
-	 * SQL 클래스를 사용하여 xml 대신 Java Code방식으로 SQL 작성
-	 */
 	public String bbs_update() {
-		
+
 		SQL sql = new SQL();
-		sql.UPDATE("tbl_hlist");
-		sql.SET("h_category = #{h_category}");
-		sql.SET("h_title= #{h_title}");
-		sql.SET("h_address= #{h_address}");
-		sql.SET("h_content= #{h_content}");
-		sql.SET("h_tel= #{h_tel}");
-		sql.SET("h_tel= #{h_tel}");
-		sql.SET("h_file= #{h_file}");
-		sql.WHERE("h_seq = #{h_seq}");
+		sql.UPDATE("tbl_board");
+		sql.SET("b_date = #{b_date}");
+		sql.SET("b_time= #{b_time}");
+		sql.SET("b_writer= #{b_writer}");
+		sql.SET("b_subject= #{b_subject}");
+		sql.SET("b_content= #{b_content}");
+		sql.SET("b_count= #{b_count}");
+		sql.WHERE("b_seq = #{b_seq}");
 		return sql.toString();
 	}
 }
