@@ -23,7 +23,7 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 100;
-	background-color: #191919;
+	background-color: green;
 	text-align: center;
 	border-radius: 20px;
 	box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);

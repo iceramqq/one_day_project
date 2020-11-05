@@ -18,4 +18,8 @@ public class UserController {
 		return "/user/logout";
 	}
 
+	@RequestMapping(value="/mypage",method=RequestMethod.GET)
+	public String mypage() {
+		return "/user/mypage";
+	}
 }

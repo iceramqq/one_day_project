@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <style>
 nav ul {
@@ -43,8 +44,14 @@ $(function() {
 	$(".bbs-list").click(function() {
 		document.location.href = "${rootPath}/bbs/list"
 	})
-	$(".logout").click(function() {
+	$("#logout").click(function() {
 		document.location.href = "${rootPath}/user/logout"
+	})
+	$("#mypage").click(function() {
+		document.location.href = "${rootPath}/user/mypage"
+	})
+	$("#user-list").click(function() {
+		document.location.href = "${rootPath}/user/user-list"
 	})
 })
 </script>
@@ -55,9 +62,14 @@ $(function() {
 		<li class="team-list" data-category="2">고택/생가</li>
 		<li class="team-list" data-category="3">유적지/사적지</li>
 		<li class="bbs-list">자유게시판</li>
-		<li class="mypage">마이페이지</li>
-		<li class="mypage-list">관리자</li>
-		<li class="logout">로그아웃</li>
-		
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
+        	<li id="user-list">관리자</li>
+        </sec:authorize>
+        <sec:authorize access="hasRole('ROLE_USER')">
+        	<li id="mypage">마이페이지</li>
+        </sec:authorize>
+		<sec:authorize access="isAuthenticated()">
+        	<li id="logout">로그아웃</li>
+        </sec:authorize>		
 	</ul>
 </nav>

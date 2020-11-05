@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.biz.team.model.TeamVO;
+import com.biz.team.model.UserVO;
 import com.biz.team.service.TeamService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -66,7 +67,6 @@ public class TeamController {
 
 		long long_seq = Long.valueOf(seq);
 		TeamVO teamVO = teamService.findBySeq(long_seq);
-
 		model.addAttribute("teamVO", teamVO);
 		return "/team/detail";
 	}

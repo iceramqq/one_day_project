@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.biz.team.model.BbsVO;
+import com.biz.team.model.UserVO;
 import com.biz.team.service.BbsService;
 
 import lombok.extern.slf4j.Slf4j;

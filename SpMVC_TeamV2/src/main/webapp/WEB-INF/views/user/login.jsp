@@ -1,7 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <style>
+header, nav, footer {
+	display: none;
+}
+
 #login_body {
 	margin: 0;
 	padding: 0;
@@ -22,20 +27,21 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 100;
-	background-color: #191919;
 	text-align: center;
 	border-radius: 20px;
-	box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+	border: 2px solid;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
 	animation-name: login_box_top_down;
 	animation-duration: 0.8s;
 	-webkit-animation-name: login_box_top_down;
 	-webkit-animation-duration: 0.8s;
 	-moz-animation-name: login_box_top_down;
 	-moz-animation-duration: 0.8s;
+	animation-name: login_box_top_down;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
 }
 
 #login_body form h2 {
-	color: white;
 	font-weight: 500;
 }
 
@@ -55,11 +61,11 @@
 	border: 0;
 	border-radius: 25px;
 	transition: 0.5s;
+	font-weight: bold;
 }
 
 #login_body form input {
 	border: 2px solid #3498db;
-	color: white;
 }
 
 #login_body form input:focus {
@@ -69,19 +75,19 @@
 
 #login_body form button {
 	border: 2px solid #2ecc71;
-	color: white;
 }
 
 #login_body form button:hover {
 	background-color: #2ecc71;
+	color: white;
 }
 
 /* 
       @keyframes 
       CSS3 에니메이션을 JS 사용하지 않고 구현할수 있도록 만들어진 Query
       */
-@keyframes login_box_top_down {
-from { top:-300px;
+@
+keyframes login_box_top_down {from { top:-300px;
 	opacity: 0;
 }
 
@@ -91,26 +97,26 @@ to {
 }
 
 h4#login-fail {
-	margin:5px auto;
+	margin: 5px auto;
 	background-color: red;
-	color:yellow;
+	color: yellow;
 	border-radius: 15px;
-	padding:8px;
+	padding: 8px;
 }
-
 </style>
 <section id="login_body">
 	<form method="POST" action="${rootPath}/login">
 		<h2>로그인</h2>
-		
+
 		<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
 			<h4 id="login-fail">${SPRING_SECURITY_LAST_EXCEPTION.message}</h4>
-			<c:remove var="SPRING_SECURITY_LAST_EXCEPTION" scope="session"/>
+			<c:remove var="SPRING_SECURITY_LAST_EXCEPTION" scope="session" />
 		</c:if>
-		
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		<input name="username" placeholder="사용자 ID" /> 
-		<input name="password" type="password" placeholder="비밀번호" />
+
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}"> <input name="username"
+			placeholder="사용자 ID" /> <input name="password" type="password"
+			placeholder="비밀번호" />
 		<button>로그인</button>
 		<button type="button">회원가입</button>
 	</form>
