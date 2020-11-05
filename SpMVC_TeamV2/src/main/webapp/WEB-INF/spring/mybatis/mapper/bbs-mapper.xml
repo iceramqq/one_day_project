@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.biz.book.mapper.BbsDao">
+<mapper namespace="com.biz.team.mapper.BbsDao">
 
 	<insert id="insert">
 		INSERT INTO tbl_board (
@@ -32,6 +32,6 @@
 			b_subject	= #{b_subject},
 			b_content	= #{b_content},
 			b_count		= #{b_count}
-		WHERE b_seq	= #{b_seq}
+		WHERE b_seq	= #{seq}
 	</update>
 </mapper>

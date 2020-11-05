@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.biz.book.mapper.TeamDao">
+
+	<insert id="insert">
+		INSERT INTO tbl_hlist (
+			h_seq,
+			h_category,
+			h_title,
+			h_address,
+			h_content,
+			h_tel,
+			h_file
+		) VALUES (
+			seq_hlist.NEXTVAL,
+			#{h_category},
+			#{h_title},
+			#{h_address},
+			#{h_content},
+			#{h_tel},
+			#{h_file}
+		)
+	</insert>
+	<update id="update" parameterType="TeamVO">
+		UPDATE tbl_board SET
+			h_category		= #{h_category},
+			h_title		= #{h_title},
+			h_address	= #{h_address},
+			h_content	= #{h_content},
+			h_tel	= #{h_tel},
+			h_file		= #{h_file}
+		WHERE h_seq	= #{seq}
+	</update>
+</mapper>
