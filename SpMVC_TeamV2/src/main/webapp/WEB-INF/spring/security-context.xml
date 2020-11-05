@@ -17,7 +17,9 @@
 				username-parameter="username"
 				password-parameter="password"
 				login-processing-url="/login" />
-		<sec:logout/>
+		<sec:logout logout-url="/logout" 
+					logout-success-url="/" 
+					invalidate-session="true"/>
 	</sec:http>
 	
 	<bean id="authProvider" class="com.biz.team.auth.AuthProviderImpl"/>

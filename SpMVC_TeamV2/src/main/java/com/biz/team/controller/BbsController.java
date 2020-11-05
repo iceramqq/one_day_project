@@ -59,7 +59,9 @@ public class BbsController {
 
 		long long_seq = Long.valueOf(seq);
 		BbsVO bbsVO = bbsService.findBySeq(long_seq);
-
+		int count = bbsVO.getB_count();
+		bbsVO.setB_count(++count);
+		bbsService.update(bbsVO);
 		model.addAttribute("BbsVO", bbsVO);
 		return "/bbs/bbs-detail";
 	}

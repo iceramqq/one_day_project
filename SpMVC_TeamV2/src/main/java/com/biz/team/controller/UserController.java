@@ -12,5 +12,10 @@ public class UserController {
 	public String login() {
 		return "/user/login";
 	}
+	
+	@RequestMapping(value="/logout",method=RequestMethod.GET)
+	public String logout() {
+		return "/user/logout";
+	}
 
 }

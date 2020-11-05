@@ -60,10 +60,12 @@ $(function() {
 		let seq = $(this).data("seq")
 		document.location.href = "${rootPath}/team/detail/" + seq
 	})
+	/*
 	$("#btn-write").click(function() {
 		let category = $(this).data("category")
 		document.location.href = "${rootPath}/team/write"
 	})
+	*/
 })
 
 </script>
@@ -83,7 +85,9 @@ $(function() {
 			<p>${hlist.h_content}</p>
 		</div>
 	</c:forEach>
+	<!-- 
 	<article>
 		<button id="btn-write" type="button">새로작성</button>
 	</article>
+	 -->
 </section>

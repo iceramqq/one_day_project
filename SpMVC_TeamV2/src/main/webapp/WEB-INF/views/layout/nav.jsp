@@ -43,6 +43,9 @@ $(function() {
 	$(".bbs-list").click(function() {
 		document.location.href = "${rootPath}/bbs/list"
 	})
+	$(".logout").click(function() {
+		document.location.href = "${rootPath}/user/logout"
+	})
 })
 </script>
 <nav id="main-nav">
