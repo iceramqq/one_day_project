@@ -52,9 +52,9 @@ $(function() {
 		<li class="team-list" data-category="2">고택/생가</li>
 		<li class="team-list" data-category="3">유적지/사적지</li>
 		<li class="bbs-list">자유게시판</li>
-		<li>마이페이지</li>
-		<li>관리자</li>
-		<li>로그아웃</li>
+		<li class="mypage">마이페이지</li>
+		<li class="mypage-list">관리자</li>
+		<li class="logout">로그아웃</li>
 		
 	</ul>
 </nav>

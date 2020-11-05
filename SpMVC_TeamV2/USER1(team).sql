@@ -39,4 +39,17 @@ START WITH 1 INCREMENT BY 1;
 DROP TABLE tbl_board;
 DROP SEQUENCE seq_board;
 
+CREATE TABLE tbl_login (
+username	VARCHAR2(30)		PRIMARY KEY,
+PASSWORD	nVARCHAR2(255)	NOT NULL	,
+M_NAME	nVARCHAR2(30)		,
+M_TEL	VARCHAR2(30)		,
+M_EMAIL	VARCHAR2(30)		,
+Enabled	CHAR(1)	DEFAULT '0'	,
+AccountNonExpired	CHAR(1)		,
+AccountNonLocked	CHAR(1)		,
+CredentialsNonExpired	CHAR(1)		
+);
+
+
 

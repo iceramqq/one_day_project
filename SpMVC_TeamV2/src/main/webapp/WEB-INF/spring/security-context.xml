@@ -8,7 +8,8 @@
 		http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security-5.2.xsd">
 
 	<sec:http>
-		<sec:intercept-url pattern="/login" access="permitAll"/>
+		<sec:intercept-url pattern="/login" access="permitAll()"/>
+		<sec:intercept-url pattern="/user/login" access="permitAll()"/>
 		<sec:intercept-url pattern="/**" access="isAuthenticated()"/>
 		
 		<sec:form-login
