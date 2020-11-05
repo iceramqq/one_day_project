@@ -72,11 +72,12 @@ div.button-box button:hover {
 	color: black;
 }
 </style>
+<script type="text/javascript">
+	var csrf_header = '${_csrf.headerName}'
+	var csrf_token = '${_csrf.token}'
+</script>
 <h2>게시판 작성</h2>
 <form method="POST" id="write-form">
-		<div>
-		<input type="hidden" name="b_seq" value="${BbsVO.b_seq}">
-		</div>
 	<div>
 		<label>작성자</label> <input  name="b_writer" value="${BbsVO.b_writer}"/>
 	</div>
@@ -92,7 +93,7 @@ div.button-box button:hover {
 	</div>
 	<div>
 		<label></label>
-		<textarea  id="b_content"  name="b_content" rows="5" cols="20"></textarea>
+		<textarea  id="b_content"  name="b_content" rows="5" cols="20">${BbsVO.b_content}</textarea>
 	</div>
 	<div class="button-box">
 		<button id="g-save">저장</button>

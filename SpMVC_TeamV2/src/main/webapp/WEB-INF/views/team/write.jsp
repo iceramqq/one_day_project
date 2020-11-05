@@ -78,6 +78,8 @@ button#save {
 }
 </style>
 <script type="text/javascript">
+	var csrf_header = '${_csrf.headerName}'
+	var csrf_token = '${_csrf.token}'
 	$(function() {
 		$("#save").click(function() {
 			let category = $
