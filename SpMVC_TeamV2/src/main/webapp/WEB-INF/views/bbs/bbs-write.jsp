@@ -34,7 +34,6 @@ form#write-form label {
 	color: purple;
 	text-align: right;
 	font-weight: bold;
-	
 }
 
 form#write-form input {
@@ -71,6 +70,9 @@ div.button-box button:hover {
 	background-color: #aaa;
 	color: black;
 }
+.hidden {
+	display: none;
+}
 </style>
 <script type="text/javascript">
 	var csrf_header = '${_csrf.headerName}'
@@ -79,21 +81,25 @@ div.button-box button:hover {
 <h2>게시판 작성</h2>
 <form method="POST" id="write-form">
 	<div>
-		<label>작성자</label> <input  name="b_writer" value="${BbsVO.b_writer}"/>
+		<label>작성자</label> <input name="b_writer" value="${BbsVO.b_writer}" />
 	</div>
 
 	<div>
-		<label>날짜</label> <input  name="b_date" value="${BbsVO.b_date}"/>
+		<label>날짜</label> <input name="b_date" value="${BbsVO.b_date}" />
 	</div>
 	<div>
-		<label>시각</label> <input name="b_time" value="${BbsVO.b_time}"/>
+		<label>시각</label> <input name="b_time" value="${BbsVO.b_time}" />
 	</div>
 	<div>
-		<label>제목</label> <input  name="b_subject" value="${BbsVO.b_subject}"/>
+		<label>제목</label> <input name="b_subject" value="${BbsVO.b_subject}" />
 	</div>
 	<div>
 		<label></label>
-		<textarea  id="b_content"  name="b_content" rows="5" cols="20">${BbsVO.b_content}</textarea>
+		<textarea id="b_content" name="b_content" rows="5" cols="20">${BbsVO.b_content}</textarea>
+	</div>
+	<div>
+		<input class="hidden" type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}">
 	</div>
 	<div class="button-box">
 		<button id="g-save">저장</button>

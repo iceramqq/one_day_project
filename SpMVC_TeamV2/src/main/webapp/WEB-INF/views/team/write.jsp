@@ -76,10 +76,11 @@ button:hover {
 button#save {
 	background-color: blue;
 }
+.hidden {
+	display: none;
+}
 </style>
 <script type="text/javascript">
-	var csrf_header = '${_csrf.headerName}'
-	var csrf_token = '${_csrf.token}'
 	$(function() {
 		$("#save").click(function() {
 			let category = $
@@ -97,8 +98,7 @@ button#save {
 			<label>문화재명</label> <input name="h_title" value="${teamVO.h_title}">
 		</div>
 		<div>
-			<label>분류</label>
-			<select name="h_category">
+			<label>분류</label> <select name="h_category">
 				<option value="1">고궁/성</option>
 				<option value="2">고택/생가</option>
 				<option value="3">유적지/사적지</option>
@@ -116,6 +116,10 @@ button#save {
 		</div>
 		<div>
 			<label>이미지</label> <input type="file" name="file" accept="image/*">
+		</div>
+		<div>
+			<input class="hidden" type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}">
 		</div>
 		<div class="button-box">
 			<button type="submit" id="save">저장</button>
