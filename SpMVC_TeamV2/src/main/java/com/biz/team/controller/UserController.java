@@ -18,6 +18,11 @@ public class UserController {
 		return "/user/logout";
 	}
 
+	@RequestMapping(value="/join",method=RequestMethod.GET)
+	public String join() {
+		return "/user/join";
+	}
+	
 	@RequestMapping(value="/mypage",method=RequestMethod.GET)
 	public String mypage() {
 		return "/user/mypage";

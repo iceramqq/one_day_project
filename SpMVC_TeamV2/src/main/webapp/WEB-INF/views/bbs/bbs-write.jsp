@@ -70,20 +70,26 @@ div.button-box button:hover {
 	background-color: #aaa;
 	color: black;
 }
+
 .hidden {
 	display: none;
 }
 </style>
 <script type="text/javascript">
-	var csrf_header = '${_csrf.headerName}'
-	var csrf_token = '${_csrf.token}'
+	$(function() {
+		$(".bbs-list").click(function() {
+			document.location.href = "${rootPath}/bbs/list"
+		})
+	})
 </script>
 <h2>게시판 작성</h2>
 <form method="POST" id="write-form">
 	<div>
+		<input class="hidden" type="hidden" name="b_seq" value="${BbsVO.b_seq}" />
+	</div>
+	<div>
 		<label>작성자</label> <input name="b_writer" value="${BbsVO.b_writer}" />
 	</div>
-
 	<div>
 		<label>날짜</label> <input name="b_date" value="${BbsVO.b_date}" />
 	</div>
@@ -102,6 +108,7 @@ div.button-box button:hover {
 			value="${_csrf.token}">
 	</div>
 	<div class="button-box">
+		<button type="button" class="bbs-list">리스트</button>
 		<button id="g-save">저장</button>
 	</div>
 </form>

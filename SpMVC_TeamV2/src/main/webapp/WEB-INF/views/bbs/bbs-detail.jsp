@@ -127,7 +127,6 @@ $(function() {
 </section>
 <section id="team-button-box">
 	<button class="bbs-list">리스트</button>
-	<c:if test=""></c:if>
 	<button class="update">수정</button>
 	<button class="delete">삭제</button>
 </section>

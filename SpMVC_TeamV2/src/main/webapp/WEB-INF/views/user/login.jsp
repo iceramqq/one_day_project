@@ -104,6 +104,13 @@ h4#login-fail {
 	padding: 8px;
 }
 </style>
+<script>
+  $(function () {
+    $(".join").click(function () {
+		document.location.href = "${rootPath}/user/join"
+    });
+  });
+</script>
 <section id="login_body">
 	<form method="POST" action="${rootPath}/login">
 		<h2>로그인</h2>
@@ -118,6 +125,6 @@ h4#login-fail {
 			placeholder="사용자 ID" /> <input name="password" type="password"
 			placeholder="비밀번호" />
 		<button>로그인</button>
-		<button type="button">회원가입</button>
+		<button class="join" type="button">회원가입</button>
 	</form>
 </section>

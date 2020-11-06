@@ -23,7 +23,7 @@ nav ul li {
 	cursor: pointer;
 }
 
-nav ul li:nth-child(6) {
+nav ul li:nth-child(5) {
 	margin-left: auto;
 }
 
@@ -57,7 +57,6 @@ $(function() {
 </script>
 <nav id="main-nav">
 	<ul id="main-menu">
-		<li class="home">home</li>
 		<li class="team-list" data-category="1">고궁/성</li>
 		<li class="team-list" data-category="2">고택/생가</li>
 		<li class="team-list" data-category="3">유적지/사적지</li>
