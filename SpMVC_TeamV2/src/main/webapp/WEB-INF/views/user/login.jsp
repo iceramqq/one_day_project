@@ -12,6 +12,14 @@ header, nav, footer {
 	padding: 0;
 }
 
+#wrap-img {
+	height: 100%;
+	width: 100%;
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+}
+
 #login_body form {
 	width: 400px;
 	padding: 40px;
@@ -30,15 +38,15 @@ header, nav, footer {
 	text-align: center;
 	border-radius: 20px;
 	border: 2px solid;
-	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
 	animation-name: login_box_top_down;
-	animation-duration: 0.8s;
+	animation-duration: 2s;
 	-webkit-animation-name: login_box_top_down;
-	-webkit-animation-duration: 0.8s;
+	-webkit-animation-duration: 2s;
 	-moz-animation-name: login_box_top_down;
-	-moz-animation-duration: 0.8s;
+	-moz-animation-duration: 2s;
 	animation-name: login_box_top_down;
 	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
+	background-color: white;
 }
 
 #login_body form h2 {
@@ -86,16 +94,18 @@ header, nav, footer {
       @keyframes 
       CSS3 에니메이션을 JS 사용하지 않고 구현할수 있도록 만들어진 Query
       */
-@
-keyframes login_box_top_down {from { top:-300px;
-	opacity: 0;
+@keyframes login_box_top_down {
+	from { 
+		top:-300px;
+		opacity: 0;
+	}
+	
+	to {
+		top: 50%;
+		opacity: 1;
+	}
+	
 }
-
-to {
-	top: 50%;
-	opacity: 1;
-}
-
 h4#login-fail {
 	margin: 5px auto;
 	background-color: red;
@@ -112,6 +122,7 @@ h4#login-fail {
   });
 </script>
 <section id="login_body">
+	<img id="wrap-img" src="${rootPath}/resources/imga/2288.jpg" />
 	<form method="POST" action="${rootPath}/login">
 		<h2>로그인</h2>
 
