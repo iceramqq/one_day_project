@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.biz.iolist">
+	<logger name="com.biz.team">
 		<level value="info" />
 	</logger>
 	

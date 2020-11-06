@@ -87,9 +87,9 @@ div.btn button {
 		<tr>
 			<td colspan="7">데이터가 없습니다</td>
 	</c:if>
-	<c:forEach items="${bbsList}" var="list" varStatus="i">
+	<c:forEach items="${bbsList}" var="list">
 		<tr class="bor-tr" data-seq="${list.b_seq}">
-			<td>${i.count}</td>
+			<td>${list.b_seq}</td>
 			<td>${list.b_date}</td>
 			<td>${list.b_time}</td>
 			<td>${list.b_writer}</td>
