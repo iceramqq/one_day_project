@@ -9,8 +9,8 @@
 
 	<sec:http>
 		<sec:intercept-url pattern="/login" access="permitAll()"/>
-		<sec:intercept-url pattern="/user/login" access="permitAll()"/>
-		<sec:intercept-url pattern="/user/join" access="permitAll()"/>
+		<sec:intercept-url pattern="/user/mypage" access="isAuthenticated()"/>
+		<sec:intercept-url pattern="/user/**" access="permitAll()"/>
 		<sec:intercept-url pattern="/resources/**" access="permitAll()"/>
 		<sec:intercept-url pattern="/**" access="isAuthenticated()"/>
 		

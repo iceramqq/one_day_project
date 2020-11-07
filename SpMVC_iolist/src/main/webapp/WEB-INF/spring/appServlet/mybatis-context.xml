@@ -3,35 +3,39 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd
-		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd">
-
-	<bean id="oracle_ds" class="org.apache.commons.dbcp2.BasicDataSource">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-		<property name="username" value="user1"/>
-		<property name="password" value="user1"/>
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	<!-- dataSource -->
+	<bean id="oracleDS"
+		class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName"
+			value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url"
+			value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="user1" />
+		<property name="password" value="user1" />
 	</bean>
 
-	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="oracle_ds"/>
-		<property name="typeAliasesPackage" value="com.biz.team.model"/>
-		<property name="configuration">
-			<bean class="org.apache.ibatis.session.Configuration">
-				<property name="jdbcTypeForNull" value="VARCHAR"/>
-			</bean>
-		</property>
+	<!-- sqlSessionFactory -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="oracleDS" />
+		<property name="mapperLocations"
+			value="/WEB-INF/spring/mybatis/mapper/*-mapper.xml" />
+		<property name="configLocation"
+			value="/WEB-INF/spring/mybatis/mybatis-config.xml" />
 	</bean>
-	
-	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="oracle_ds"/>
+
+	<!-- sqlSessionTemplate -->
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" index="0" />
 	</bean>
-	
-	<mybatis-spring:scan base-package="com.biz.team.mapper"/>
-	
 
-
-
+	<!-- mybatis-scan -->
+	<mybatis-spring:scan
+		base-package="com.biz.iolist.mapper" />
 
 </beans>
