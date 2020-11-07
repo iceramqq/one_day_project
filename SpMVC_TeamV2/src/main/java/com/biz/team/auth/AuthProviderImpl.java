@@ -66,7 +66,7 @@ public class AuthProviderImpl implements AuthenticationProvider {
 
 		// 로그인 비밀번호 추출하기
 		String password = authentication.getCredentials().toString();
-		if (password!=userVO.getPassword()) {
+		if (!userVO.getPassword().equals(password)) {
 			throw new BadCredentialsException("비밀번호를 확인해 주세요!!");
 		}
 

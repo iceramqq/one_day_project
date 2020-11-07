@@ -2,16 +2,20 @@ package com.biz.team.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.biz.team.mapper.UserDao;
 import com.biz.team.model.UserVO;
 import com.biz.team.service.UserService;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@RequiredArgsConstructor
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
@@ -50,6 +54,14 @@ public class UserController {
 		return "/user/mypage";
 	}
 
+	@RequestMapping(value = "/mypage", method = RequestMethod.POST)
+	public String mypage(UserVO userVO) {
+		
+		userService.update(userVO);
+		return "redirect:/team/list/1";
+	}
+	
+	@ResponseBody
 	@RequestMapping(value = "/password_check", method = RequestMethod.POST)
 	public String password_check(String username, String password) {
 		UserVO userVO = userService.findById(username);
@@ -60,7 +72,8 @@ public class UserController {
 			return "FAIL";
 		}
 	}
-
+	
+	@ResponseBody
 	@RequestMapping(value = "/id_check", method = RequestMethod.POST)
 	public String id_check(String username) {
 

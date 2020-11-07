@@ -41,7 +41,7 @@ public class UserDetailService implements UserDetailsService {
 		 */
 		List<GrantedAuthority> authList = new ArrayList<>();
 
-		if (!userVO.getM_role().equals("0")) {
+		if (userVO.getM_role().equals("0")) {
 			authList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 		} else {
 			authList.add(new SimpleGrantedAuthority("ROLE_USER"));

@@ -7,10 +7,19 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security-5.2.xsd">
 
-	<sec:http>
+	<context:component-scan base-package="com.biz.team.service"/>
+	
+	<bean id="authProvider" class="com.biz.team.auth.AuthProviderImpl"/>
+	<sec:authentication-manager>
+		<sec:authentication-provider ref="authProvider"  />
+	</sec:authentication-manager>
+	
+	<sec:http auto-config="true" use-expressions="true">
+		<sec:csrf disabled="false"/>
 		<sec:intercept-url pattern="/login" access="permitAll()"/>
-		<sec:intercept-url pattern="/user/mypage" access="isAuthenticated()"/>
-		<sec:intercept-url pattern="/user/**" access="permitAll()"/>
+		<sec:intercept-url pattern="/user/login" access="permitAll()"/>
+		<sec:intercept-url pattern="/user/join" access="permitAll()"/>
+		<sec:intercept-url pattern="/user/**" access="isAuthenticated()"/>
 		<sec:intercept-url pattern="/resources/**" access="permitAll()"/>
 		<sec:intercept-url pattern="/**" access="isAuthenticated()"/>
 		
@@ -24,8 +33,5 @@
 					invalidate-session="true"/>
 	</sec:http>
 	
-	<bean id="authProvider" class="com.biz.team.auth.AuthProviderImpl"/>
-	<sec:authentication-manager>
-		<sec:authentication-provider ref="authProvider"  />
-	</sec:authentication-manager>
+	
 </beans>
