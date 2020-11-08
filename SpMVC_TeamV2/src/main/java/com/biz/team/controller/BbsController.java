@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.biz.team.model.BbsVO;
 import com.biz.team.model.UserVO;
 import com.biz.team.service.BbsService;
+import com.biz.team.service.UserService;
+import com.biz.team.service.UserServiceImplV1;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -48,21 +51,25 @@ public class BbsController {
 	}
 
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String write(BbsVO BbsVO) {
-
+	public String write(Authentication authProvider, BbsVO BbsVO) {
+		UserVO userVO = (UserVO) authProvider.getPrincipal();
+		BbsVO.setId(userVO.getUsername());
 		bbsService.insert(BbsVO);
 		return "redirect:/bbs/list";
 
 	}
 
 	@RequestMapping(value = "/detail/{seq}", method = RequestMethod.GET)
-	public String detail(@PathVariable("seq") String seq, Model model) {
+	public String detail(Authentication authProvider, @PathVariable("seq") String seq, Model model) {
 
 		long long_seq = Long.valueOf(seq);
 		BbsVO bbsVO = bbsService.findBySeq(long_seq);
 		int count = bbsVO.getB_count();
 		bbsVO.setB_count(++count);
 		bbsService.update(bbsVO);
+		
+		UserVO userVO = (UserVO) authProvider.getPrincipal();
+		model.addAttribute("username", userVO.getUsername());
 		model.addAttribute("BbsVO", bbsVO);
 		return "/bbs/bbs-detail";
 	}

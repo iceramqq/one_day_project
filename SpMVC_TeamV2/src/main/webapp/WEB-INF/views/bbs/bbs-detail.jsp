@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <style>
@@ -120,13 +121,21 @@ $(function() {
 		<div class="content">시간</div>
 		<th>${BbsVO.b_time}</th>
 		<hr />
-		
 		<div class="title">내용</div>
 		<th>${BbsVO.b_content}</th>
 	</article>
 </section>
 <section id="team-button-box">
 	<button class="bbs-list">리스트</button>
-	<button class="update">수정</button>
-	<button class="delete">삭제</button>
+	<c:choose>
+	<c:when test="${username == BbsVO.id}">
+		<button class="update">수정</button>
+		<button class="delete">삭제</button>
+	</c:when>
+	<c:otherwise>
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<button class="delete">삭제</button>
+        </sec:authorize>
+	</c:otherwise>
+	</c:choose>
 </section>

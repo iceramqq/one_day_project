@@ -15,7 +15,7 @@ public class BbsSQL {
 		sql.INTO_COLUMNS("b_subject").INTO_VALUES("#{b_subject}");
 		sql.INTO_COLUMNS("b_content").INTO_VALUES("#{b_content}");
 		sql.INTO_COLUMNS("b_count").INTO_VALUES("#{b_count}");
-
+		sql.INTO_COLUMNS("id").INTO_VALUES("#{id}");
 		return sql.toString();
 
 	}

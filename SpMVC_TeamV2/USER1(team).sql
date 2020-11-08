@@ -29,7 +29,8 @@ b_time	VARCHAR2(10)	NOT NULL,
 b_writer	NVARCHAR2(30)	NOT NULL,	
 b_subject	NVARCHAR2(125)	NOT NULL,	
 b_content	NVARCHAR2(2000)		,
-b_count	NUMBER		
+b_count	NUMBER	,
+id VARCHAR2(30)
 
 );
 

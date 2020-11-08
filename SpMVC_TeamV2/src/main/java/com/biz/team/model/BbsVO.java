@@ -22,6 +22,7 @@ public class BbsVO {
 	  private String b_subject;	
 	  private String b_content;
 	  private int b_count;
+	  private String id;
 	
 
 }
