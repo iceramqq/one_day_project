@@ -51,7 +51,7 @@ $(function() {
 		document.location.href = "${rootPath}/user/mypage"
 	})
 	$("#user-list").click(function() {
-		document.location.href = "${rootPath}/user/user-list"
+		document.location.href = "${rootPath}/user/list"
 	})
 })
 </script>

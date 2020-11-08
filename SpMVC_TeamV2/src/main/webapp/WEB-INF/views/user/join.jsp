@@ -124,7 +124,7 @@ form#member-write #btn_box button:hover {
 			},
 			success : function(result) {
 				$("div#msg_username").css("display", "block")
-				if (result === "OK") {
+				if (result == "OK") {
 					// alert("사용가능한 username 입니다")
 					$("div#msg_username span").text("사용가능한 회원 ID 입니다")
 					$("div#msg_username span").css("color", "blue")
@@ -181,7 +181,7 @@ form#member-write #btn_box button:hover {
 		ID 중복 버튼을 클릭하지 않아도 ID 중보검사를 할수 있도록
 		username input box에 blur event를 설정
 		 */
-		$("#m_username").click(function() {
+		$("#username").blur(function(){
 			let username = $("#username").val()
 			id_check(username)
 		})

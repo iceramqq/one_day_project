@@ -25,7 +25,7 @@ public class UserSQL {
 		SQL sql = new SQL();
 		sql.UPDATE("tbl_user");
 		sql.SET("password = #{password}");
-		sql.SET("role= #{role}");
+		sql.SET("m_role= #{m_role}");
 		sql.SET("accountNonLocked= #{accountNonLocked}");
 		sql.WHERE("username = #{username}");
 		return sql.toString();
