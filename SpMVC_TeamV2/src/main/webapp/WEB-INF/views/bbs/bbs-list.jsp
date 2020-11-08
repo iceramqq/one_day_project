@@ -70,7 +70,7 @@ div.btn button {
 
 	})
 </script>
-<h2>게시판</h2>
+<h2>자유게시판</h2>
 <table class="table-striped">
 	<thead>
 		<tr>
